@@ -22,10 +22,23 @@ void init_graphics(void); // sets up the vertex buffer and the custom vertex for
 
 struct CUSTOMVERTEX // create a struct for our custom vertex type
 {
-	FLOAT x, y, z, rhw; // the transformed position for the vertex
+	FLOAT x, y, z; // the transformed position for the vertex
 	DWORD color; // the vertex color
 };
-#define CUSTOMFVF (D3DFVF_XYZRHW | D3DFVF_DIFFUSE) // custom flexible vertex format
+#define CUSTOMFVF (D3DFVF_XYZ | D3DFVF_DIFFUSE) // custom flexible vertex format
+
+typedef struct _D3DMATRIX
+{
+	union {
+		struct {
+			float		_11, _12, _13, _14;
+			float		_21, _22, _23, _24;
+			float		_31, _32, _33, _34;
+			float		_41, _42, _43, _44;
+		};
+		float m[4][4];
+	}
+};
 
 // the WindowProc function prototype
 // WindowProc 전방 선언
